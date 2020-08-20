@@ -47,7 +47,7 @@ print(my_array1[:-1])
 print(my_array1[:, :-1])
 # computing the sum of all of the elements in my_array1 except for the last column.
 print(np.sum(my_array1[:, :-1]))
-
+print('--------------------------------------------------')
 import pandas as pd
 
 my_df = pd.DataFrame({'c1': [1.0, 2.0, 3.0],
@@ -57,7 +57,17 @@ my_df = pd.DataFrame({'c1': [1.0, 2.0, 3.0],
 print(my_df)
 print(my_df.shape)
 
-print(my_df.iloc[1:, :2])  # From the second row on, up to the second column
+# From the second row on, up to the second column
+print(my_df.iloc[1:, :2])
 # index a DataFrame by using column names
 print(my_df['c2'])
+
+# In Python reading and writing to files can be done using the 'open' keyword, which creates a file handle for the
+# given path. It is good practice to always use 'open' inside a 'with' clause. This will ensure that the file handle
+# is closed properly once the with clause finishes.
+with open('my_file.txt', 'w') as f:  # Note that the 'w' means we want to write strings to this path.
+    # *IMPORTANT* If the file already exists, it will be overwritten.
+    f.write('Hello\nWorld!')
+# After the with clause, the file will be closed.
+
 
