@@ -1,6 +1,9 @@
 from collections import defaultdict
 import os
 import pickle
+from itertools import islice
+
+from similarity_measures import TF_Similarity
 
 
 def get_zero():
@@ -75,7 +78,13 @@ class InvertedIndex:
 
         sim_scores = self.similarity_measure(query_vector)
         # TODO sort the results in sim_scores and return only the max_results_returned docs with the highest scores.
-        raise NotImplementedError
+        print(TF_Similarity(self.postings).get_scores(sim_scores, query_vector))
+        # print(sim_scores)
+        sorted_scores = sorted(sim_scores.items(), key=lambda kv: (kv[1], kv[0]), reverse=True)
+        # print(sorted_scores)
+        sorted_sim_scores = list(islice(sorted_scores, max_results_returned))
+        # print(sorted_sim_scores)
+        # raise NotImplementedError
         return sorted_sim_scores
 
     def set_similarity(self, sim):

@@ -1,3 +1,4 @@
+import math
 from abc import abstractmethod
 from collections import defaultdict
 from math import log, sqrt
@@ -11,6 +12,7 @@ class CosineSimilarity:
         self.postings = postings
         self.doc_to_norm = dict()
         self.set_document_norms()
+        self.idf = 1.0
 
     def __call__(self, query):
         doc_to_score = defaultdict(lambda: 0)
@@ -47,7 +49,18 @@ class TFIDF_Similarity(CosineSimilarity):
     # TODO implement the set_document_norms and get_scores methods.
     # Get rid of the NotImplementedErrors when you are done.
     def set_document_norms(self):
-        raise NotImplementedError
+        for doc, token_counts in self.postings.doc_to_token_counts.items():
+            self.doc_to_norm[doc] = sqrt(sum([tf ** 2 for tf in token_counts.values()]))
 
     def get_scores(self, doc_to_score, query):
-        raise NotImplementedError
+
+        for token, query_term_frequency in query.items():
+            numOfDoc = 1
+            for _ in self.postings.token_to_doc_counts[token].items():
+                numOfDoc += 1
+            totalDocs = self.postings.num_docs
+            idf = math.log(totalDocs / numOfDoc)
+            for doc, token_counts in self.postings.doc_to_token_counts.items():
+                self.doc_to_norm[doc] = sqrt(sum([(tf * idf) ** 2 for tf in token_counts.values()]))
+            for doc, document_term_frequency in self.postings.token_to_doc_counts[token].items():
+                doc_to_score[doc] += query_term_frequency * document_term_frequency * idf / self.doc_to_norm[doc]
