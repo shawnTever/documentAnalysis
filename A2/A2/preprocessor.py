@@ -1,6 +1,8 @@
 import nltk
 from functools import lru_cache
 
+# nltk.download('punkt')
+
 
 class Preprocessor:
     def __init__(self):
@@ -9,6 +11,8 @@ class Preprocessor:
         # stemming algorithm.
         self.stem = lru_cache(maxsize=100000)(nltk.PorterStemmer().stem)
         self.tokenize = nltk.tokenize.WhitespaceTokenizer().tokenize
+        # self.tokenize = nltk.tokenize.word_tokenize
+        # self.tokenize = nltk.tokenize.SpaceTokenizer().tokenize
 
     def __call__(self, text):
         tokens = self.tokenize(text)
