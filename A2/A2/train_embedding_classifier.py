@@ -21,3 +21,4 @@ torch.save(model, os.path.join('saved_models', 'classifier.pth'))
 print('')
 print_accuracies(accuracies)
 plot_losses(losses)
+

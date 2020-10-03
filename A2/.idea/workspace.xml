@@ -12,16 +12,22 @@
       <change afterPath="$PROJECT_DIR$/../A1/.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../A1/.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../A1/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/A2/data/test.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/A2/test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/A2/u6782003 Xiyong Tian data.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/A2/u6782003 Xiyong Tian.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/A2/~$782003 Xiyong Tian data.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/A2/saved_models/classifier.pth" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pytorch/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pytorch/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pytorch/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pytorch/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pytorch/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pytorch/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/A2/__settings__.py" beforeDir="false" afterPath="$PROJECT_DIR$/A2/__settings__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/A2/data_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/A2/data_loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/A2/preprocessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/A2/preprocessor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/A2/train_vector_classifer.py" beforeDir="false" afterPath="$PROJECT_DIR$/A2/train_vector_classifer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/A2/data/test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/A2/data/test.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/A2/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/A2/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/A2/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/A2/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/A2/train_embedding_classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/A2/train_embedding_classifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/A2/~$782003 Xiyong Tian data.docx" beforeDir="false" afterPath="$PROJECT_DIR$/A2/~$782003 Xiyong Tian data.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pytorch/.idea/pytorch.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../pytorch/.idea/pytorch.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pytorch/Pytorch_Intro.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../pytorch/Pytorch_Intro.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pytorch/pytorch_intro.py" beforeDir="false" afterPath="$PROJECT_DIR$/../pytorch/pytorch_intro.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,10 +61,31 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../testproject/Python" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../pytorch" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
-  <component name="RunManager" selected="Python.train_vector_classifer">
+  <component name="RunManager" selected="Python.train_embedding_classifier">
+    <configuration name="models" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="A2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/A2" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/A2/models.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="A2" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -72,6 +99,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/A2/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="train_embedding_classifier" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="A2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/A2" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/A2/train_embedding_classifier.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -103,8 +151,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.train_vector_classifer" />
+        <item itemvalue="Python.train_embedding_classifier" />
+        <item itemvalue="Python.models" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.train_vector_classifer" />
       </list>
     </recent_temporary>
   </component>
@@ -131,50 +181,85 @@
       <option name="project" value="LOCAL" />
       <updated>1601147876843</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Ass2 Q1">
+      <created>1601648517916</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1601648517916</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Ass2 initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ass2 initial commit" />
+    <MESSAGE value="Ass2 Q1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ass2 Q1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="722" y="216" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601398955301">
+    <state x="722" y="216" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601669115135">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="722" y="216" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1601398955301" />
-    <state x="367" y="0" key="CommitChangelistDialog2" timestamp="1601147863245">
+    <state x="722" y="216" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1601669115135" />
+    <state x="367" y="0" key="CommitChangelistDialog2" timestamp="1601648512894">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="367" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1601147863244" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1601402605706">
+    <state x="367" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1601648512894" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1601737439748">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1601402605706" />
-    <state width="970" height="209" key="GridCell.Tab.0.bottom" timestamp="1601648143185">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1601737439748" />
+    <state width="1515" height="208" key="GridCell.Tab.0.bottom" timestamp="1601751074396">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="970" height="209" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1601648143185" />
-    <state width="970" height="209" key="GridCell.Tab.0.center" timestamp="1601648143185">
+    <state width="1515" height="208" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1601751074396" />
+    <state width="1515" height="208" key="GridCell.Tab.0.center" timestamp="1601751074396">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="970" height="209" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1601648143185" />
-    <state width="970" height="209" key="GridCell.Tab.0.left" timestamp="1601648143185">
+    <state width="1515" height="208" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1601751074396" />
+    <state width="1515" height="208" key="GridCell.Tab.0.left" timestamp="1601751074396">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="970" height="209" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1601648143185" />
-    <state width="970" height="209" key="GridCell.Tab.0.right" timestamp="1601648143185">
+    <state width="1515" height="208" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1601751074396" />
+    <state width="1515" height="208" key="GridCell.Tab.0.right" timestamp="1601751074396">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="970" height="209" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1601648143185" />
+    <state width="1515" height="208" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1601751074396" />
+    <state width="1515" height="261" key="GridCell.Tab.1.bottom" timestamp="1601671183541">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1601671183541" />
+    <state width="1515" height="261" key="GridCell.Tab.1.center" timestamp="1601671183541">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1601671183541" />
+    <state width="1515" height="261" key="GridCell.Tab.1.left" timestamp="1601671183541">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1601671183541" />
+    <state width="1515" height="261" key="GridCell.Tab.1.right" timestamp="1601671183541">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1601671183541" />
     <state x="533" y="158" key="IDE.errors.dialog" timestamp="1601399560475">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="533" y="158" key="IDE.errors.dialog/0.0.1536.824@0.0.1536.824" timestamp="1601399560475" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1601147878497">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1601648519434">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1601147878497" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1601648519434" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/A2/data_loader.py</url>
+          <line>65</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

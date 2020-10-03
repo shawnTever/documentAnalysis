@@ -1,3 +1,4 @@
+import torch
 import torch.nn as nn
 
 
@@ -11,7 +12,7 @@ class FastText(nn.Module):
         random initialization. If given then provided word_embeddings are used and the embeddings are not trained.
         """
         super().__init__()
-        self.embeddings = nn.Embedding(vocab_size,embedding_dim, padding_idx=0)
+        self.embeddings = nn.Embedding(vocab_size, embedding_dim, padding_idx=0)
         if word_embeddings is not None:
             self.embeddings = self.embeddings.from_pretrained(word_embeddings, freeze=True, padding_idx=0)
         self.W = nn.Linear(embedding_dim, num_classes)
@@ -25,4 +26,8 @@ class FastText(nn.Module):
         """
 
         # TODO perform embed, aggregate, and linear, then return the predicted class probabilities.
-        raise NotImplementedError
+        word_embeds = self.embeddings(x)
+        print(torch.max(word_embeds, 1))
+        y_h = self.W(word_embeds.max(1)[0])
+        return y_h
+

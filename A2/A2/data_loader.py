@@ -67,6 +67,7 @@ class TextDS:
         sentences = list(batch['ids'].values)  # sentences is a list of all of the sentences in the batch (in word ID form).
         # TODO convert sentences into a list of inputs (x) and a list of outputs (y). The i'th element of x should be
         # a list of w*2 word ids from the i'th context window. i'th element of y should be the centre word of the i'th context window.
+        print(sentences)
         raise NotImplementedError
         return x, y
 
