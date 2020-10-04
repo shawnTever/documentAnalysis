@@ -67,8 +67,32 @@ class TextDS:
         sentences = list(batch['ids'].values)  # sentences is a list of all of the sentences in the batch (in word ID form).
         # TODO convert sentences into a list of inputs (x) and a list of outputs (y). The i'th element of x should be
         # a list of w*2 word ids from the i'th context window. i'th element of y should be the centre word of the i'th context window.
-        print(sentences)
-        raise NotImplementedError
+        x, y = [], []
+        i = 0
+        # for sentence in sentences:
+        #     i = 0
+        #     for wordsId in sentence:
+        #         if 0 < i < len(sentence) - 1:
+        #             window = []
+        #             y.append(wordsId)
+        #             window.append(sentence[i - 1])
+        #             window.append(sentence[i + 1])
+        #             x.append(window)
+        #         i += 1
+        for sentence in sentences:
+            if i == 0:
+                y = torch.LongTensor(sentence[w: len(sentence) - w])
+                window1 = torch.LongTensor(sentence[w - 1: len(sentence) - w - 1]).view(-1, 1)
+                window2 = torch.LongTensor(sentence[w + 1: len(sentence) - w + 1]).view(-1, 1)
+                x = torch.cat([window1, window2], dim=1).view(-1, 2)
+            else:
+                y1 = torch.LongTensor(sentence[w: len(sentence) - w])
+                y = torch.cat([y, y1], dim=0)
+                window1 = torch.LongTensor(sentence[w - 1: len(sentence) - w - 1]).view(-1, 1)
+                window2 = torch.LongTensor(sentence[w + 1: len(sentence) - w + 1]).view(-1, 1)
+                x1 = torch.cat([window1, window2], dim=1).view(-1, 2)
+                x = torch.cat([x, x1], dim=0)
+            i += 1
         return x, y
 
     def get_batches(self):
@@ -102,7 +126,7 @@ class LabelledTextDS(TextDS):
         vectorizer = CountVectorizer(lowercase=False,
                                      tokenizer=lambda x: x,  # Tokenization should already be done by preprocessor
                                      stop_words=None,
-                                     max_features=100,  ## This only keeps the 100 most frequent words as features
+                                     max_features=None,  ## This only keeps the 100 most frequent words as features
                                      ngram_range=(1, 1),  ## This uses only unigram counts
                                      binary=False)  ## This sets the beatures to be frequency counts
         pipeline = Pipeline([('vec', vectorizer), ('tfidf', TfidfTransformer())])

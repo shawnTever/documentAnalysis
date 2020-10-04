@@ -94,8 +94,11 @@ a = torch.FloatTensor([[[[1, 2, 1],
                          [4, 0, 1]],
                         [[1, 1, 1],
                          [1, 1, 1]]]])
-print(f'0: {a.max(0)}')
-print(f'0: {torch.max(a, 0)}')
+# print(f'0: {a.max(0)}')
+# print(f'0: {torch.sum(a, 1)}')
+print(f'count: {(a != 0).sum(dim=1)}')
 # print(f'1: {a.max(1)}')
 # print(f'2: {a.max(2)}')
 # print(f'3: {a.max(3)}')
+
+

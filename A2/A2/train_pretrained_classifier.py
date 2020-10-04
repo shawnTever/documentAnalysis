@@ -6,8 +6,8 @@ from models import FastText
 from plotting import *
 from training import train_model
 
-num_epochs = 5
-num_hidden = 32  # Number of hidden neurons in model
+num_epochs = 20
+num_hidden = 256  # Number of hidden neurons in model
 
 dev = 'cuda' if torch.cuda.is_available() else 'cpu'
 dataset = LabelledTextDS(os.path.join('data', 'labelled_movie_reviews.csv'), dev=dev)

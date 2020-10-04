@@ -27,7 +27,59 @@ class FastText(nn.Module):
 
         # TODO perform embed, aggregate, and linear, then return the predicted class probabilities.
         word_embeds = self.embeddings(x)
-        print(torch.max(word_embeds, 1))
-        y_h = self.W(word_embeds.max(1)[0])
+        sum = torch.sum(word_embeds, 1)
+        max = torch.max(word_embeds, 1)[0]
+        count = (word_embeds != 0).sum(dim=1)
+        mean = torch.div(sum, count)
+        # print(torch.sum(word_embeds, 1))
+        y_h = self.W(max)
         return y_h
 
+
+class MultiLayer(nn.Module):
+    def __init__(self, vocab_size, embedding_dim, num_classes, word_embeddings=None):
+        super().__init__()
+        self.embeddings = nn.Embedding(vocab_size, embedding_dim, padding_idx=0)
+        if word_embeddings is not None:
+            self.embeddings = self.embeddings.from_pretrained(word_embeddings, freeze=True, padding_idx=0)
+        self.W1 = nn.Linear(embedding_dim, embedding_dim)
+        self.W2 = nn.Linear(embedding_dim, num_classes)
+
+    def forward(self, x):
+        word_embeds = self.embeddings(x)
+        max = torch.max(word_embeds, 1)[0]
+        y_hidden = self.W1(max)
+        y_output = self.W2(y_hidden)
+        return y_output
+
+
+class GRU(nn.Module):
+    def __init__(self, vocab_size, embedding_dim, num_classes, word_embeddings=None):
+        super().__init__()
+        self.embeddings = nn.Embedding(vocab_size, embedding_dim, padding_idx=0)
+        if word_embeddings is not None:
+            self.embeddings = self.embeddings.from_pretrained(word_embeddings, freeze=True, padding_idx=0)
+        self.gru = nn.GRU(embedding_dim, embedding_dim, 1)
+        self.W = nn.Linear(embedding_dim, num_classes)
+
+    def forward(self, x):
+        word_embeds = self.embeddings(x)
+        max = torch.max(word_embeds, 1)[0]
+        h_all, h_final = self.gru(max)
+        return self.W(h_final.squeeze(0))
+
+
+class LSTM(nn.Module):
+    def __init__(self, vocab_size, embedding_dim, num_classes, word_embeddings=None):
+        super().__init__()
+        self.embeddings = nn.Embedding(vocab_size, embedding_dim, padding_idx=0)
+        if word_embeddings is not None:
+            self.embeddings = self.embeddings.from_pretrained(word_embeddings, freeze=True, padding_idx=0)
+        self.lstm = nn.LSTM(embedding_dim, embedding_dim, 1)
+        self.W = nn.Linear(embedding_dim, num_classes)
+
+    def forward(self, x):
+        word_embeds = self.embeddings(x)
+        max = torch.max(word_embeds, 1)[0]
+        h_all, (h_final, c_final) = self.lstm(max)
+        return self.W(h_final.squeeze(0))

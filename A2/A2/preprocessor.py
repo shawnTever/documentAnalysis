@@ -2,6 +2,7 @@ import nltk
 from functools import lru_cache
 
 # nltk.download('punkt')
+from nltk.corpus import stopwords
 
 
 class Preprocessor:
@@ -17,4 +18,10 @@ class Preprocessor:
     def __call__(self, text):
         tokens = self.tokenize(text)
         tokens = [self.stem(token) for token in tokens]
-        return tokens
+        stop_words = stopwords.words('english')
+        token = []
+        for word in tokens:
+            if word not in stop_words:
+                token.append(word)
+        return token
+        # return tokens

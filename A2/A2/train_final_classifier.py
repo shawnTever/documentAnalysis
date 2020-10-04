@@ -2,18 +2,20 @@ import os
 import torch.optim
 
 from data_loader import LabelledTextDS
-from models import FastText
+import models
 from plotting import *
 from training import train_model
 
-num_epochs = 5
-num_hidden = 32  # Number of hidden neurons in model
+num_epochs = 20
+num_hidden = 256  # Number of hidden neurons in model
 
 dev = 'cuda' if torch.cuda.is_available() else 'cpu'  # If you have a GPU installed, use that, otherwise CPU
 dataset = LabelledTextDS(os.path.join('data', 'labelled_movie_reviews.csv'), dev=dev)
 
-model = FastText(len(dataset.token_to_id)+2, num_hidden, len(dataset.class_to_id)).to(dev)
-optimizer = torch.optim.SGD(model.parameters(), lr=0.1, momentum=0.9)
+model = models.MultiLayer(len(dataset.token_to_id) + 2, num_hidden, len(dataset.class_to_id)).to(dev)
+# model = models.GRU(len(dataset.token_to_id)+2, num_hidden, len(dataset.class_to_id)).to(dev)
+# model = models.LSTM(len(dataset.token_to_id)+2, num_hidden, len(dataset.class_to_id)).to(dev)
+optimizer = torch.optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
 
 losses, accuracies = train_model(dataset, model, optimizer, num_epochs)
 torch.save(model, os.path.join('saved_models', 'classifier.pth'))
