@@ -64,8 +64,8 @@ class GRU(nn.Module):
 
     def forward(self, x):
         word_embeds = self.embeddings(x)
-        max = torch.max(word_embeds, 1)[0]
-        h_all, h_final = self.gru(max)
+        # max = torch.max(word_embeds, 1)[0]
+        h_all, h_final = self.gru(word_embeds)
         return self.W(h_final.squeeze(0))
 
 
