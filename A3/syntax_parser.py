@@ -76,7 +76,7 @@ for treeRootNode in y:
                 symbols_count_dic[eachNode.val] += 1
             else:
                 symbols_count_dic[eachNode.val] = 1
-        # print(symbols_count_dic)
+            # print(symbols_count_dic)
             s = "".join(str(x.val) for x in eachNode.children)
             if (eachNode.val, s) in transition_count_dic:
                 transition_count_dic[(eachNode.val, s)] += 1
@@ -84,7 +84,9 @@ for treeRootNode in y:
                 transition_count_dic[(eachNode.val, s)] = 1
 
 for transition in transition_count_dic.keys():
-        probability_of_transition[str(transition[0]) + '->' + str(transition[1])] = transition_count_dic[transition] / symbols_count_dic[transition[0]]
+    probability_of_transition[str(transition[0]) + '->' + str(transition[1])] = transition_count_dic[transition] / \
+                                                                                symbols_count_dic[transition[0]]
+
 # print(symbols_count_dic)
 # print(transition_count_dic)
 # print(probability_of_transition)
@@ -92,7 +94,7 @@ for transition in transition_count_dic.keys():
 PCFG_list = []
 
 for key in sorted(probability_of_transition.keys()):
-    # print(str(key) + ': ' + str(probability_of_transition[key]))
+    # print(str(key) + ': ' + str(probability_of_transition[key]))  # separate line format of answer
     PCFG_list.append(str(key) + ': ' + str(probability_of_transition[key]))
 
-print(PCFG_list)
+print(PCFG_list)  # list format of answer
