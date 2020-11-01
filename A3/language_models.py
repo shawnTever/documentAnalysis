@@ -82,7 +82,34 @@ class KNSmoothing:
 
     def compute_prop(self, bigram, discount=0.75):
         # TODO Implement Kneser-ney smoothing bigram probability calculation.
-        raise NotImplementedError
+        preceding_word_count = 0
+        if bigram[0] in self.stats.unigram_to_count:
+            preceding_word_count = self.stats.unigram_to_count[bigram[0]]
+
+        if preceding_word_count > 0:
+            left_term = 0
+            if bigram in self.stats.bigram_to_count:
+                bigram_count = float(self.stats.bigram_to_count[bigram])
+                left_term = (bigram_count - discount) / preceding_word_count
+            right_term = 0
+            if bigram[1] in self.stats.unigram_to_count:
+                current_word_count = self.stats.unigram_to_count[bigram[1]]
+                num_bigram_preceding_word = 0
+                for c_bigram in self.stats.bigram_to_count.keys():
+                    if c_bigram[0] == bigram[0]:
+                        num_bigram_preceding_word += 1
+                normalization_param = (discount * num_bigram_preceding_word) / preceding_word_count
+
+                num_bigram_subsequent_word = 0
+                for c_bigram in self.stats.bigram_to_count.keys():
+                    if c_bigram[1] == bigram[1]:
+                        num_bigram_subsequent_word += 1
+                bigram_freq = len(self.stats.bigram_to_count.keys())
+                p_continuation = num_bigram_subsequent_word / bigram_freq
+                right_term = normalization_param * p_continuation
+            return left_term + right_term
+
+        return 0
 
 
 def compute_prop(prop_computer, ngram_stats, preceding_unigram, d=0.75):

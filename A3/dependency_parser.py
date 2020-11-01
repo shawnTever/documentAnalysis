@@ -18,9 +18,9 @@ class Parser:
         if len(self.stack) == 0 or len(self.input_string) == 0:
             # We ae unable to apply left_arc in this situation, give up.
             return False
-        input_char = self.input_string[0] # get first input token.
-        input_char_type = input_char.split('_')[0] # each input token is made of a letter and an identifier for its position in the sequence, so that duplicate tokens can be distinguished.
-        if [input_char_type, self.stack[-1].split('_')[0]] in self.rules and not self.is_in_dependencies(self.stack[-1]): # stack[-1] is the top of the stack.
+        input_char = self.input_string[0]  # get first input token.
+        input_char_type = input_char.split('_')[0]  # each input token is made of a letter and an identifier for its position in the sequence, so that duplicate tokens can be distinguished.
+        if [input_char_type, self.stack[-1].split('_')[0]] in self.rules and not self.is_in_dependencies(self.stack[-1]):  # stack[-1] is the top of the stack.
             # Since there does not already exist a dependency to the top of the stack, perform a left-arc transition.
             self.dependencies.append([input_char, self.stack[-1]])
             self.stack = self.stack[:-1]
@@ -29,10 +29,24 @@ class Parser:
 
     # TODO Implement the right_arc and reduce functions. Make sure they obey the constraints as set out in the lecture slides.
     def right_arc(self):
-        raise NotImplementedError
+        if len(self.stack) == 0 or len(self.input_string) == 0:
+            return False
+        input_char = self.input_string[0]
+        input_char_type = input_char.split('_')[0]
+        if [self.stack[-1].split('_')[0], input_char_type] in self.rules and not self.is_in_dependencies(input_char):
+            self.dependencies.append([self.stack[-1], input_char])
+            self.stack.append(input_char)
+            self.input_string = self.input_string[1:]
+            return True
+        return False
 
     def reduce(self):
-        raise NotImplementedError
+        if len(self.stack) == 0:
+            return False
+        if self.is_in_dependencies(self.stack[-1]):
+            self.stack = self.stack[:-1]
+            return True
+        return False
 
     def shift(self):
         if len(self.input_string) == 0:
@@ -45,7 +59,8 @@ class Parser:
         print(str(self.stack) + ', ' + str(self.input_string) + ', ' + str(self.dependencies))
 
     def parse(self, input_string):
-        self.input_string = [s + '_' + str(i) for i, s in enumerate(input_string)]  # Append index to each character so that duplicate characters can be distinguished.
+        self.input_string = [s + '_' + str(i) for i, s in enumerate(
+            input_string)]  # Append index to each character so that duplicate characters can be distinguished.
         self.stack = ['ROOT']
         self.dependencies = []
         while True:
@@ -66,12 +81,12 @@ parser = Parser([['ROOT', 'A'],
                  ['A', 'B'],
                  ['B', 'C'],
                  ['C', 'B']
-                ])
+                 ])
 
-test_sentences = ['CBA', # Should succeed
-                  'ABC', # Should succeed.
-                  'ABCBC', # Should succeed.
-                  'BAC'] # Should fail.
+test_sentences = ['CBA',  # Should succeed
+                  'ABC',  # Should succeed.
+                  'ABCBC',  # Should succeed.
+                  'BAC']  # Should fail.
 
 for s in test_sentences:
     print(f'parsing {s}:')
